@@ -4,7 +4,7 @@
 由于函数（function）也是一个对象，而且函数对象可以被赋值给变量，函数可以作为另一个函数的变量。
 装饰器一般作用是将原有函数添加上新的一些功能，然后将新的功能更强的函数返回
 
-```
+```python
 import time
 
 def time_cost(func):
@@ -19,17 +19,23 @@ def time_cost(func):
 
 使用
 ```
-func_name = time_cost(_func_name)
-# or
 @time_cost
-def _func_name():
+def stop():
     pass
 
+# 以上语法糖等同于以下代码
+def stop():
+    pass
+new_stop = time_cost(stop)
+# new_stop 还是一个函数，一个对象，还是可以通过new_stop()进行调用
 ```
 
 ### 装饰器本身带有参数
 如下就是一个错误重试的装饰器，而每个函数的重试次数可以在定义的时候单独指定。
 ```
+from functools import wraps
+
+
 def retry(times):
     def wrapper_fn(f):
         @wraps(f)
@@ -57,13 +63,19 @@ def retry(times):
 @retry(3)
 def start():
     pass
+# 等同于
+new_start = retry(3)(start)
+# new_start 还是一个函数，还是可以通过new_start()进行调用
 ```
+
+以上装饰器中使用了一个装饰器`functools.wraps`，用来消除装饰器对原来函数的属性的修改。
+通过打印 `stop.__name__` 和 `start.__name__` 得知。
+==> wrapper    和    start
 
 ### 装饰器应用于类的方法（method）
 如果要给类的方法加上装饰器怎么办？
 
 如果在方法执行出错超过一定次数的时候执行类的另外一个方法，以达到兜底作用，例如给其他模块发出错信息。该怎办？
-
 
 ```python
 import logging
@@ -110,11 +122,13 @@ class A(object):
         logging.info(self.tt)
         logging.info('in decorator parameter')
 
-
 ```
 
-通常类方法的第一个参数是self，也就是类的实例本身.
+通常类方法的第一个参数是self，也就是类的实例化后的一个实例本身.
 
+以上通过python内置函数`getattr(args[0], func_name)`获取到实例的方法，并执行之。
+
+#### 补充下 *args & **kwargs
 *args (Non Keyword Arguments) 和 **kwargs (Keyword Arguments)
 ```
 def adder(*num):
@@ -136,7 +150,6 @@ def intro(**data):
 intro(Firstname="Sita", Lastname="Sharma", Age=22, Phone=1234567890)
 intro(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="Wakanda", Age=25, Phone=9876543210)
 ```
-通过python内置函数`getattr(args[0], func_name)`获取到类的方法，并执行之。
 
 ### reference
 - [python3-cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/c09/p01_put_wrapper_around_function.html)
