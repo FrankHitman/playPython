@@ -18,7 +18,7 @@ class Solution:
                 a = a - 1
                 c = c - 1
         if b >= 0:
-            nums1[:b+1] = nums2[:b+1]
+            nums1[:b + 1] = nums2[:b + 1]
         print(nums1)
 
 
@@ -31,6 +31,7 @@ if __name__ == '__main__':
     solution.merge([1, 2, 3, 0, 0, 0], 3, [4, 5, 6], 3)
     solution.merge([4, 5, 6, 0, 0, 0], 3, [1, 2, 3], 3)
 
+# https://leetcode.com/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
 # O(m+n) time
 # [1]
 # [1]
