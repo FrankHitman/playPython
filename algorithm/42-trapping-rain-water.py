@@ -1,4 +1,15 @@
-# inspired by https://leetcode.com/problems/trapping-rain-water/description/comments/2162730
+# inspired by https://leetcode.com/problems/trapping-rain-water/description/comments/2162730 from https://leetcode.com/asece1/
+# After reading a hint from the discussion and discussed with gpt, finding the greater element from left to right is the easiest representation.
+# Elevation map
+# [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+# Max left
+# [0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3]
+# Max right
+# [3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 1]
+# Trapped water
+# [0, 0, 1, 0, 1, 2, 1, 0, 0, 1, 0, 0]
+#
+# min of the two maximums minus the height is the answer.
 class Solution:
     def trap(self, height: list[int]) -> int:
         total_trapped = 0
