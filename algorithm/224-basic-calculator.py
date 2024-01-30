@@ -9,6 +9,8 @@
 
 class Solution:
     # solution is from https://walkccc.me/LeetCode/problems/0224/#__tabbed_1_3
+    # calculate the previous sum and store current operator when encounters operators
+    # previous operand is stored in a variable(num), previous operators is stored in a stack
     def calculate(self, s: str) -> int:
         ans = 0
         num = 0
