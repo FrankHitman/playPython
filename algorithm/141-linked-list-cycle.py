@@ -53,3 +53,5 @@ if __name__ == '__main__':
     l4.next = l2
     sol = Solution()
     print(sol.hasCycle(head=l1))
+
+# topic is from https://leetcode.com/problems/linked-list-cycle/submissions/1160824533/?envType=study-plan-v2&envId=top-interview-150
