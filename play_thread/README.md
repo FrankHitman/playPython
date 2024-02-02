@@ -1,4 +1,6 @@
-### 简述 [reference](https://superxiaoxiong.github.io/2016/07/27/python-threading/)
+# Multi-thread Programming
+简述 [reference](https://superxiaoxiong.github.io/2016/07/27/python-threading/)
+
 python代码执行由python虚拟机(解释器主循环)来控制，python虚拟机使用全局解释器锁(GIL)来控制，锁保证同一时刻只有一个线程在运行，对于 I/O密集型程序有很大优势。
 
 python中有Thread和Threading等模块支持线程，Thread模块比较偏底层，本文对于Threading模块进行讲解。
