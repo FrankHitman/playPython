@@ -31,6 +31,7 @@ if __name__ == '__main__':
     sol.rotate(matrix=[[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     sol.rotate(matrix=[[5, 1, 9, 11], [2, 4, 8, 10], [13, 3, 6, 7], [15, 14, 12, 16]])
 
+# check picture file: 48-rotate-image.png for the mindset
 # topic is from https://leetcode.com/problems/rotate-image/submissions/1155325726/?envType=study-plan-v2&envId=top-interview-150
 # output
 # [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
