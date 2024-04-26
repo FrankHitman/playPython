@@ -38,6 +38,11 @@ class Solution:
     def longestCommonPrefix2(self, strs: list[str]) -> str:
         if (len(strs) < 1):
             return ""
+
+        # sort string list by each character's ascii order
+        # a_list = ["flower", "flow", "flight"]
+        # sorted(a_list)
+        # ['flight', 'flow', 'flower']
         v = sorted(strs)
         first = v[0]
         last = v[len(v) - 1]

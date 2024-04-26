@@ -6,6 +6,7 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         s_set = set()
         longest_len = 0
+        # sliding window algorithm, start and stop are two pointers.
         start = 0
         for stop in range(len(s)):
             if s[stop] not in s_set:
@@ -14,7 +15,7 @@ class Solution:
                     longest_len = len(s_set)
             else:
                 s_set.add(s[stop])
-                # it's required to move start pointer to the duplicate character position
+                # it's required to move start pointer to next position of the duplicate character position
                 while start < stop:
                     if s[start] == s[stop]:
                         start += 1

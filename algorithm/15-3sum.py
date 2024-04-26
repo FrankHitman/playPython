@@ -34,15 +34,19 @@ class Solution:
     # other people's solution from leetcode which cost 509ms runtime
     def threeSum2(self, nums: list[int]) -> list[list[int]]:
         triplets = []
+        # sort list makes the finding more efficient
         nums.sort()
         for i in range(len(nums)):
             if nums[i] > 0:
+                # if the minimum item is greater than 0, return empty.
                 return triplets
             if i == 0 or nums[i] != nums[i - 1]:
+                # the -nums[i] is the remaining two items' target
                 self.two_sum(nums, -nums[i], i, triplets)
         return triplets
 
     def two_sum(self, nums, target, i, triplets):
+        # two pointers
         left = i + 1
         right = len(nums) - 1
         while left < right:
@@ -50,6 +54,7 @@ class Solution:
             if current == target:
                 triplets.append([nums[i], nums[left], nums[right]])
                 left += 1
+                #  the solution set must not contain duplicate triplets.
                 while left < right and nums[left] == nums[left - 1]:
                     left += 1
                 right -= 1

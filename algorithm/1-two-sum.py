@@ -8,6 +8,7 @@
 
 class Solution:
     # inspired by collection.defaultdict
+    # the defaultdict can map one value with different indexes
     # 65ms runtime
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         indices_map = {}
@@ -18,6 +19,7 @@ class Solution:
         # sorted(nums)
         i = 0
         j = len(nums) - 1
+        # sort the list to make finding more efficient
         nums.sort()
         while i < j:
             if nums[i] + nums[j] > target:
@@ -39,6 +41,7 @@ class Solution:
         return []
 
     # not valid, such as [3,3] return [1,1]
+    # because a dict can not map one value with different indices
     def twoSum2(self, nums: list[int], target: int) -> list[int]:
         i = 0
         j = len(nums) - 1

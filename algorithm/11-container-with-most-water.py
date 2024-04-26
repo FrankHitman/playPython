@@ -3,8 +3,12 @@
 # 2 <= n <= 105
 # 0 <= height[i] <= 104
 
+# hint2: Try to use two-pointers. Set one pointer to the left and one to the right of the array.
+# Always move the pointer that points to the lower line.
+
 class Solution:
     def maxArea(self, height: list[int]) -> int:
+        # the maximum on x-axis direction
         product = min(height[0], height[-1]) * (len(height) - 1)
         i = 0
         j = len(height) - 1
